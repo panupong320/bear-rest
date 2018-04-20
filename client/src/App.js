@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {data: [] };
+  }
+  componentDidMount(){
+      axios.get('http://localhost:8000/api/bears')
+      .then(result => {
+        this.setState({data: result.data })
+      })
+  }
   render() {
+    let bears = this.state.data;
     return (
-      <div>Hello world</div>
+      <div>
+        {
+          bears.map(bear => <div>{bear.name}</div>)
+        }
+      </div>
     );
   }
 }
