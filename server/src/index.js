@@ -18,6 +18,12 @@ router.route("/bears")
         bear.name = req.body.name;
         bears.push(bear);
         res.json({ message: 'Bear created!' });
+    })
+    
+route.route('/bear/:id')
+    .delete('/:id', function(req, res){
+        bears = bears.filter(b => b.id !== req.params.id)
+        res.json({ message: 'Bear deleted!' });
     });
 app.use(cors());
 // all of our routes will be prefixed with /api
