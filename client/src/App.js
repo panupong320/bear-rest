@@ -13,7 +13,7 @@ let bearReducer = function(state = [], action) {
   }
   return state
 }
-let store = createStoreWithMiddleware(combineReducer({
+let store = createStoreWithMiddleware(combineReducers({
   bear: bearReducer
 }))
 
