@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -30,7 +30,7 @@ class App extends Component {
     this.state = {data: [] };
   }
   componentDidMount(){
-     store.subsscribe(()  => {
+     store.subscribe(()  => {
        this.setState({data: store.getState()})
      })
      store.dispatch(fetchBearActionCreator());
